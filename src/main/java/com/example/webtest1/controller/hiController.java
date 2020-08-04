@@ -60,4 +60,17 @@ public class hiController {
         map.put("msg2","the user  "+loginuser+"login");
         return "login";
     }
+    @RequestMapping("/deleteuser")
+    public String deleteuser(HttpServletRequest request,Map<String,Object> map){
+        String username = request.getParameter("username");
+        User getuser = userMapper.getuser(username);
+        if (getuser!=null){
+            userMapper.deleteuser(username);
+            map.put("msg3","the user has been deleted!");
+            return "login";
+        }else{
+            map.put("msg3","the user is not existed");
+            return "login";
+        }
+    }
 }
