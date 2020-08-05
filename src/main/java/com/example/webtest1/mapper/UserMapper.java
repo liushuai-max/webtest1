@@ -1,10 +1,7 @@
 package com.example.webtest1.mapper;
 
 import com.example.webtest1.model.User;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 @Mapper
 public interface UserMapper {
@@ -16,4 +13,6 @@ public interface UserMapper {
     User login(String username,String password);
     @Delete("delete from user where username=#{username}")
     void deleteuser(String username);
+    @Update("update user set password=#{password} where username=#{username}")
+    void updateuser(String username,String password);
 }
